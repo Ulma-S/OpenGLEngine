@@ -28,6 +28,8 @@
 		D9EDFAB12479DADA00CCC42B /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../../usr/local/Cellar/glfw/3.3.2/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		D9EDFAB32479DB0F00CCC42B /* libglfw.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.dylib; path = ../../../../../../usr/local/lib/libglfw.dylib; sourceTree = "<group>"; };
 		D9EDFAB52479DB1200CCC42B /* libglfw.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.dylib; path = ../../../../../../usr/local/lib/libglfw.3.dylib; sourceTree = "<group>"; };
+		D9F47A2C247A89F400A50CF7 /* point.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = point.vert; sourceTree = "<group>"; };
+		D9F47A2D247A8A3900A50CF7 /* point.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = point.frag; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 		D9EDFAA62479D4D900CCC42B /* OpenGLEngine */ = {
 			isa = PBXGroup;
 			children = (
+				D9F47A2B247A895100A50CF7 /* Shader */,
 				D9EDFAAE2479D80D00CCC42B /* Header */,
 				D9EDFAAF2479D81700CCC42B /* Source */,
 			);
@@ -90,6 +93,15 @@
 				D9EDFAB12479DADA00CCC42B /* libglfw.3.3.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D9F47A2B247A895100A50CF7 /* Shader */ = {
+			isa = PBXGroup;
+			children = (
+				D9F47A2C247A89F400A50CF7 /* point.vert */,
+				D9F47A2D247A8A3900A50CF7 /* point.frag */,
+			);
+			path = Shader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
