@@ -15,8 +15,8 @@ public:
     void Bind() const;
     
 private:
-    GLuint vao;
-    GLuint vbo;
+    GLuint m_vao;
+    GLuint m_vbo;
     
     /* Avoid share pointer */
     Object(const Object &o);

@@ -1,7 +1,4 @@
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdocumentation"
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-
+#include "environment.h"
 #include <cstdlib>
 #include <iostream>
 #include <vector>
@@ -9,6 +6,7 @@
 #include <GLFW/glfw3.h>
 #include "shape.h"
 #include "shader.h"
+#include "window.h"
 
 constexpr Object::Vertex rectAngleVertex[] = {
     {-0.5f, -0.5f},
@@ -34,46 +32,39 @@ int main(void) {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     
     /* Create window */
-    GLFWwindow *window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
-    if (window == nullptr){
-        std::cerr << "Failed to create window." << std::endl;
-        return 1;
-    }
-
-    /* Set current OpenGL context */
-    glfwMakeContextCurrent(window);
-    
-    /* Initialize GLEW */
-    glewExperimental = GL_TRUE;
-    if(glewInit() != GLEW_OK){
-        std::cerr << "Failed to initialize GLEW." << std::endl;
-        return 1;
-    }
-    
-    /* Set vsync */
-    glfwSwapInterval(1);
+    Window window;
     
     /* Set background color */
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     
+    /* Set viewport */
+    glViewport(100, 50, 600, 600);
+    
     /* Create shader program object */
     const GLuint program(LoadProgram("Shader/point.vert", "Shader/point.frag"));
     
+    /* Get uniform variable location */
+    const GLint sizeLoc(glGetUniformLocation(program, "size"));
+    const GLint scaleLoc(glGetUniformLocation(program, "scale"));
+
     /* Create shape data */
     std::unique_ptr<const Shape> shape(new Shape(2, 4, rectAngleVertex));
     
     /* Loop until window closed */
-    while (glfwWindowShouldClose(window) == GL_FALSE){
+    while (window){
         /* Reset window color */
         glClear(GL_COLOR_BUFFER_BIT);
 
         glUseProgram(program);
         
+        glUniform2fv(sizeLoc, 1, window.GetSize());
+        glUniform1f(scaleLoc, window.GetScale());
+                
         /* Draw shape */
         shape->Draw();
         
         /* Swap front and back buffers */
-        glfwSwapBuffers(window);
+        window.SwapBuffers();
 
         /* Wait events */
         glfwWaitEvents();

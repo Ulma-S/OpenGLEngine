@@ -15,5 +15,5 @@ protected:
     const GLsizei vertexCount;
     
 private:
-    std::shared_ptr<const Object> object;
+    std::shared_ptr<const Object> m_object;
 };
