@@ -38,14 +38,15 @@ int main(void) {
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     
     /* Set viewport */
-    glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+    glViewport(0, 0, WINDOW_WIDTH*2, WINDOW_HEIGHT*2);
     
     /* Create shader program object */
-    const GLuint program(LoadProgram("point.vert", "Shader/point.frag"));
+    const GLuint program(LoadProgram("point.vert", "point.frag"));
     
     /* Get uniform variable location */
     const GLint sizeLoc(glGetUniformLocation(program, "size"));
     const GLint scaleLoc(glGetUniformLocation(program, "scale"));
+    const GLint locationLoc(glGetUniformLocation(program, "location"));
 
     /* Create shape data */
     std::unique_ptr<const Shape> shape(new Shape(2, 4, rectAngleVertex));
@@ -59,6 +60,7 @@ int main(void) {
         
         glUniform2fv(sizeLoc, 1, window.GetSize());
         glUniform1f(scaleLoc, window.GetScale());
+        glUniform2fv(locationLoc, 1, window.GetLocation());
                 
         /* Draw shape */
         shape->Draw();

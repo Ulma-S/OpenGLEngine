@@ -15,13 +15,18 @@ public:
     void SwapBuffers() const;
     
     static void Resize(GLFWwindow *const window, int width, int height);
+    
+    static void Wheel(GLFWwindow *const window, double x, double y);
         
     inline const GLfloat* GetSize() { return m_size; }
     
     GLfloat GetScale() const { return m_scale; }
     
+    inline const GLfloat* GetLocation() { return m_location; }
+    
 private:
     GLFWwindow *const m_window;
     GLfloat m_size[2];
     GLfloat m_scale;
+    GLfloat m_location[2];
 };
