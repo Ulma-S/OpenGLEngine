@@ -38,10 +38,10 @@ int main(void) {
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     
     /* Set viewport */
-    glViewport(100, 50, 600, 600);
+    glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
     
     /* Create shader program object */
-    const GLuint program(LoadProgram("Shader/point.vert", "Shader/point.frag"));
+    const GLuint program(LoadProgram("point.vert", "Shader/point.frag"));
     
     /* Get uniform variable location */
     const GLint sizeLoc(glGetUniformLocation(program, "size"));

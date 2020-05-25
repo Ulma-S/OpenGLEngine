@@ -6,7 +6,7 @@
 
 class Window{
 public:
-    Window(int width = 640, int height = 480, const char* title = "OpenGL Engine");
+    Window(int width = WINDOW_WIDTH, int height = WINDOW_HEIGHT, const char* title = "OpenGL Engine");
     
     ~Window();
 

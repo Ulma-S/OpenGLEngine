@@ -111,9 +111,13 @@ bool ReadShaderSource(const char *name, std::vector<GLchar> &buffer){
 /* Load shader from source and create progeam object*/
 GLuint LoadProgram(const char *vert, const char *frag){
     std::vector<GLchar> vsrc;
-    const bool vstat(ReadShaderSource(vert, vsrc));
+    std::string v = vert;
+    std::string tmpVert = SHADER_PATH + v;
+    const bool vstat(ReadShaderSource(tmpVert.c_str(), vsrc));
     std::vector<GLchar> fsrc;
-    const bool fstat(ReadShaderSource(frag, fsrc));
+    std::string f = frag;
+    std::string tmpFrag = SHADER_PATH + f;
+    const bool fstat(ReadShaderSource(tmpFrag.c_str(), fsrc));
     
     if(vstat && fstat){
         return CreateProgram(vsrc.data(), fsrc.data());
