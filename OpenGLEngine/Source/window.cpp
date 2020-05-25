@@ -4,6 +4,7 @@ Window::Window(int width, int height, const char* title)
     :m_window(glfwCreateWindow(width, height, title, nullptr, nullptr))
     ,m_scale(100.0f)
     ,m_location{0.0f, 0.0f}
+    ,keyStatus(GLFW_RELEASE)
 {
     /* Create window */
     if(m_window == nullptr){
@@ -33,6 +34,9 @@ Window::Window(int width, int height, const char* title)
     /* Register callback when scrolled */
     glfwSetScrollCallback(m_window, Wheel);
     
+    /* Register callback when key status changed */
+    glfwSetKeyCallback(m_window, Keyboard);
+    
     Resize(m_window, width, height);
 }
 
@@ -43,7 +47,22 @@ Window::~Window(){
 
 
 Window::operator bool(){
-    glfwWaitEvents();
+    if(keyStatus == GLFW_RELEASE){
+        glfwWaitEvents();
+    }else{
+        glfwPollEvents();
+    }
+    
+    float speed = 6.0f;
+    if(glfwGetKey(m_window, GLFW_KEY_LEFT) != GLFW_RELEASE){
+        m_location[0] -= speed/m_size[0];
+    }else if(glfwGetKey(m_window, GLFW_KEY_RIGHT) != GLFW_RELEASE){
+        m_location[0] += speed/m_size[0];
+    }else if(glfwGetKey(m_window, GLFW_KEY_DOWN) != GLFW_RELEASE){
+        m_location[1] -= speed/m_size[1];
+    }else if(glfwGetKey(m_window, GLFW_KEY_UP) != GLFW_RELEASE){
+        m_location[1] += speed/m_size[1];
+    }
     
     if(glfwGetMouseButton(m_window, GLFW_MOUSE_BUTTON_1) != GLFW_RELEASE){
         /* Get mouse cursor location */
@@ -53,7 +72,7 @@ Window::operator bool(){
         m_location[0] = static_cast<GLfloat>(x)*2.0f/m_size[0] -1.0f;
         m_location[1] = 1.0f - static_cast<GLfloat>(y)*2.0f/m_size[1];
     }
-        
+    
     return !glfwWindowShouldClose(m_window) && !glfwGetKey(m_window, GLFW_KEY_ESCAPE);
 }
 
@@ -83,5 +102,13 @@ void Window::Wheel(GLFWwindow *const window, double x, double y){
     
     if(instance != nullptr){
         instance->m_scale += static_cast<GLfloat>(y);
+    }
+}
+
+void Window::Keyboard(GLFWwindow *const window, int key, int scanCode, int action, int mods){
+    Window *const instance(static_cast<Window*>(glfwGetWindowUserPointer(window)));
+    
+    if(instance != nullptr){
+        instance->keyStatus = action;
     }
 }

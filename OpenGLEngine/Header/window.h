@@ -17,6 +17,8 @@ public:
     static void Resize(GLFWwindow *const window, int width, int height);
     
     static void Wheel(GLFWwindow *const window, double x, double y);
+    
+    static void Keyboard(GLFWwindow *const window, int key, int scanCode, int action, int mods);
         
     inline const GLfloat* GetSize() { return m_size; }
     
@@ -29,4 +31,5 @@ private:
     GLfloat m_size[2];
     GLfloat m_scale;
     GLfloat m_location[2];
+    int keyStatus;
 };
