@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D916D8EA247AB13B0046EFF5 /* shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D916D8E8247AB13B0046EFF5 /* shape.cpp */; };
+		D95E3003247A9758003E339B /* object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D95E3001247A9758003E339B /* object.cpp */; };
+		D9EB8018247B23DE00173315 /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9EB8016247B23DE00173315 /* window.cpp */; };
 		D9EDFAA82479D4D900CCC42B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9EDFAA72479D4D900CCC42B /* main.cpp */; };
+		D9F47A30247A941500A50CF7 /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9F47A2E247A941500A50CF7 /* shader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,6 +27,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D916D8E8247AB13B0046EFF5 /* shape.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = shape.cpp; sourceTree = "<group>"; };
+		D916D8E9247AB13B0046EFF5 /* shape.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shape.h; sourceTree = "<group>"; };
+		D95E3001247A9758003E339B /* object.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = object.cpp; sourceTree = "<group>"; };
+		D95E3002247A9758003E339B /* object.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = object.h; sourceTree = "<group>"; };
+		D95E3004247A97DF003E339B /* environment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = environment.h; sourceTree = "<group>"; };
+		D9EB8016247B23DE00173315 /* window.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = window.cpp; sourceTree = "<group>"; };
+		D9EB8017247B23DE00173315 /* window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = window.h; sourceTree = "<group>"; };
 		D9EDFAA42479D4D900CCC42B /* OpenGLEngine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenGLEngine; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EDFAA72479D4D900CCC42B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D9EDFAB12479DADA00CCC42B /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../../usr/local/Cellar/glfw/3.3.2/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
@@ -30,6 +41,8 @@
 		D9EDFAB52479DB1200CCC42B /* libglfw.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.dylib; path = ../../../../../../usr/local/lib/libglfw.3.dylib; sourceTree = "<group>"; };
 		D9F47A2C247A89F400A50CF7 /* point.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = point.vert; sourceTree = "<group>"; };
 		D9F47A2D247A8A3900A50CF7 /* point.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = point.frag; sourceTree = "<group>"; };
+		D9F47A2E247A941500A50CF7 /* shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = shader.cpp; sourceTree = "<group>"; };
+		D9F47A2F247A941500A50CF7 /* shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +86,11 @@
 		D9EDFAAE2479D80D00CCC42B /* Header */ = {
 			isa = PBXGroup;
 			children = (
+				D95E3004247A97DF003E339B /* environment.h */,
+				D95E3002247A9758003E339B /* object.h */,
+				D9F47A2F247A941500A50CF7 /* shader.h */,
+				D916D8E9247AB13B0046EFF5 /* shape.h */,
+				D9EB8017247B23DE00173315 /* window.h */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -81,6 +99,10 @@
 			isa = PBXGroup;
 			children = (
 				D9EDFAA72479D4D900CCC42B /* main.cpp */,
+				D95E3001247A9758003E339B /* object.cpp */,
+				D9F47A2E247A941500A50CF7 /* shader.cpp */,
+				D916D8E8247AB13B0046EFF5 /* shape.cpp */,
+				D9EB8016247B23DE00173315 /* window.cpp */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -161,7 +183,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D95E3003247A9758003E339B /* object.cpp in Sources */,
+				D9F47A30247A941500A50CF7 /* shader.cpp in Sources */,
+				D9EB8018247B23DE00173315 /* window.cpp in Sources */,
 				D9EDFAA82479D4D900CCC42B /* main.cpp in Sources */,
+				D916D8EA247AB13B0046EFF5 /* shape.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
