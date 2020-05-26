@@ -117,7 +117,7 @@ public:
         return t;
     }
     
-    static Matrix Lookat(
+    inline static Matrix Lookat(
         GLfloat ex, GLfloat ey, GLfloat ez,
         GLfloat gx, GLfloat gy, GLfloat gz,
         GLfloat ux, GLfloat uy, GLfloat uz){
@@ -157,6 +157,49 @@ public:
         rv[10] = tz/t;
         
         return rv * tv;
+    }
+    
+    inline static Matrix Orthogonal(GLfloat left, GLfloat right,
+                             GLfloat bottom, GLfloat top,
+                             GLfloat zNear, GLfloat zFar){
+        Matrix t;
+        const GLfloat dx(right-left);
+        const GLfloat dy(top-bottom);
+        const GLfloat dz(zFar-zNear);
+        
+        if(dx != 0 && dy != 0 && dz != 0){
+            t.LoadIdentity();
+            t[0] = 2.0f/dx;
+            t[5] = 2.0f/dy;
+            t[10] = -2.0f/dz;
+            t[12] = -(right+left)/dx;
+            t[13] = -(top+bottom)/dy;
+            t[14] = -(zFar+zNear)/dz;
+        }
+        
+        return t;
+    }
+    
+    inline static Matrix Frustum(GLfloat left, GLfloat right,
+                                 GLfloat bottom, GLfloat top,
+                                 GLfloat zNear, GLfloat zFar){
+        Matrix t;
+        const GLfloat dx(right-left);
+        const GLfloat dy(top-bottom);
+        const GLfloat dz(zFar-zNear);
+        
+        if(dx != 0.0f && dy != 0.0f && dz != 0.0f){
+            t.LoadIdentity();
+            t[0] = 2.0f * zNear / dx;
+            t[5] = 2.0f * zNear / dy;
+            t[8] = (right + left) / dx;
+            t[9] = (top + bottom) / dy;
+            t[10] = -(zNear + zFar) / dz;
+            t[11] = -1.0f;
+            t[14] = -2.0f * zFar * zNear / dz;
+            t[15] = 0.0f;
+        }
+        return t;
     }
     
 private:

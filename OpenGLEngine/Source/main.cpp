@@ -45,7 +45,8 @@ int main(void) {
     const GLuint program(LoadProgram("point.vert", "point.frag"));
     
     /* Get uniform variable location */
-    const GLint modelViewLoc(glGetUniformLocation(program, "modelview"));
+    const GLint modelviewLoc(glGetUniformLocation(program, "modelview"));
+    const GLint projectionLoc(glGetUniformLocation(program, "projection"));
 
     /* Create shape data */
     std::unique_ptr<const Shape> shape(new Shape(2, 4, rectAngleVertex));
@@ -59,18 +60,18 @@ int main(void) {
         
         const GLfloat *const size(window.GetSize());
         const GLfloat scale(window.GetScale() * 2.0f);
-        const Matrix scaling(Matrix::Scale(scale/size[0], scale/size[1], 1.0f));
+        const GLfloat w(size[0]/scale), h(size[1]/scale);
+        const Matrix projection(Matrix::Frustum(-w, w, -h, h, 1.0f, 10.0f));
         
-        const GLfloat *const position(window.GetLocation());
-        const Matrix translation(Matrix::Translate(position[0], position[1], 0.0f));
-        
-        const Matrix model(translation * scaling);
-        
-        const Matrix view(Matrix::Lookat(0.0f, 0.0f, 0.0f, -1.0f, -1.0f, -1.0f, 0.0f, 1.0f, 0.0f));
+        const GLfloat *const location(window.GetLocation());
+        const Matrix model(Matrix::Translate(location[0], location[1], 0.0f));
+                        
+        const Matrix view(Matrix::Lookat(3.0f, 4.0f, 5.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f));
         
         const Matrix modelview(view * model);
         
-        glUniformMatrix4fv(modelViewLoc, 1, GL_FALSE, modelview.Data());
+        glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, projection.Data());
+        glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelview.Data());
         
         /* Draw shape */
         shape->Draw();
