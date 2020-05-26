@@ -202,6 +202,23 @@ public:
         return t;
     }
     
+    inline static Matrix Perspective(GLfloat fovy, GLfloat aspect,
+                                     GLfloat zNear, GLfloat zFar){
+        Matrix t;
+        const GLfloat dz(zFar - zNear);
+        
+        if(dz != 0.0f){
+            t.LoadIdentity();
+            t[5] = std::tanf(fovy * 0.5f);
+            t[0] = t[5] / aspect;
+            t[10] = -(zFar + zNear) / dz;
+            t[11] = -1.0f;
+            t[14] = -2.0f * zFar * zNear / dz;
+            t[15] = 0.0f;
+        }
+        return t;
+    }
+    
 private:
     GLfloat m_matrix[16];
 };

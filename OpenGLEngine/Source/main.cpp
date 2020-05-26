@@ -59,9 +59,9 @@ int main(void) {
         glUseProgram(program);
         
         const GLfloat *const size(window.GetSize());
-        const GLfloat scale(window.GetScale() * 2.0f);
-        const GLfloat w(size[0]/scale), h(size[1]/scale);
-        const Matrix projection(Matrix::Frustum(-w, w, -h, h, 1.0f, 10.0f));
+        const GLfloat fovy(window.GetScale() * 0.01f);
+        const GLfloat aspect(size[0]/size[1]);
+        const Matrix projection(Matrix::Perspective(fovy, aspect, 1.0f, 10.0f));
         
         const GLfloat *const location(window.GetLocation());
         const Matrix model(Matrix::Translate(location[0], location[1], 0.0f));
