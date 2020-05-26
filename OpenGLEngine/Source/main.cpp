@@ -6,22 +6,49 @@
 #include <GLFW/glfw3.h>
 #include "Matrix.h"
 #include "Shape.h"
+#include "ShapeIndex.h"
 #include "Shader.h"
 #include "Window.h"
 
-constexpr Object::Vertex octahedronVertex[] = {
-    { 0.0f,  1.0f,  0.0f},
-    {-1.0f,  0.0f,  0.0f},
-    { 0.0f, -1.0f,  0.0f},
-    { 1.0f,  0.0f,  0.0f},
-    { 0.0f,  1.0f,  0.0f},
-    { 0.0f,  0.0f,  1.0f},
-    { 0.0f, -1.0f,  0.0f},
-    { 0.0f,  0.0f, -1.0f},
-    {-1.0f,  0.0f,  0.0f},
-    { 0.0f,  0.0f,  1.0f},
-    { 1.0f,  0.0f,  0.0f},
-    { 0.0f,  0.0f, -1.0f}
+//constexpr Object::Vertex octahedronVertex[] = {
+//    { 0.0f,  1.0f,  0.0f},
+//    {-1.0f,  0.0f,  0.0f},
+//    { 0.0f, -1.0f,  0.0f},
+//    { 1.0f,  0.0f,  0.0f},
+//    { 0.0f,  1.0f,  0.0f},
+//    { 0.0f,  0.0f,  1.0f},
+//    { 0.0f, -1.0f,  0.0f},
+//    { 0.0f,  0.0f, -1.0f},
+//    {-1.0f,  0.0f,  0.0f},
+//    { 0.0f,  0.0f,  1.0f},
+//    { 1.0f,  0.0f,  0.0f},
+//    { 0.0f,  0.0f, -1.0f}
+//};
+
+constexpr Object::Vertex cubeVertex[] = {
+    {-1.0f, -1.0f, -1.0f,  0.0f,  0.0f,  0.0f},
+    {-1.0f, -1.0f,  1.0f,  0.0f,  0.0f,  0.8f},
+    {-1.0f,  1.0f,  1.0f,  0.0f,  0.8f,  0.0f},
+    {-1.0f,  1.0f, -1.0f,  0.0f,  0.8f,  0.8f},
+    { 1.0f,  1.0f, -1.0f,  0.8f,  0.0f,  0.0f},
+    { 1.0f, -1.0f, -1.0f,  0.8f,  0.0f,  0.8f},
+    { 1.0f, -1.0f,  1.0f,  0.8f,  0.8f,  0.0f},
+    { 1.0f,  1.0f,  1.0f,  0.8f,  0.8f,  0.8f}
+};
+
+constexpr GLuint wireCubeIndex[] = {
+    1, 0,
+    2, 7,
+    3, 0,
+    4, 7,
+    5, 0,
+    6, 7,
+    1, 2,
+    2, 3,
+    3, 4,
+    4, 5,
+    5, 6,
+    6, 1
 };
 
 int main(void) {
@@ -57,7 +84,7 @@ int main(void) {
     const GLint projectionLoc(glGetUniformLocation(program, "projection"));
 
     /* Create shape data */
-    std::unique_ptr<const Shape> shape(new Shape(3, 12, octahedronVertex));
+    std::unique_ptr<const Shape> shape(new ShapeIndex(3, 8, cubeVertex, 24, wireCubeIndex));
     
     /* Loop until window closed */
     while (window){
