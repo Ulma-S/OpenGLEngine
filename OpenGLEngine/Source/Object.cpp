@@ -1,6 +1,6 @@
-#include "object.h"
+#include "Object.h"
 
-Object::Object(GLint size, GLsizei vertexCount, const Object::Vertex *vertex){
+Object::Object(GLint size, GLsizei vertexCount, const Object::Vertex *vertex, GLsizei indexCount, const GLuint *index){
     glGenVertexArrays(1, &m_vao);
     glBindVertexArray(m_vao);
     
@@ -10,6 +10,10 @@ Object::Object(GLint size, GLsizei vertexCount, const Object::Vertex *vertex){
     
     glVertexAttribPointer(0, size, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(0);
+    
+    glGenBuffers(1, &m_ibo);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ibo);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexCount * sizeof(GLuint), index, GL_STATIC_DRAW);
 }
 
 
@@ -17,6 +21,8 @@ Object::~Object(){
     glDeleteVertexArrays(1, &m_vao);
     
     glDeleteBuffers(1, &m_vbo);
+    
+    glDeleteBuffers(1, &m_ibo);
 }
 
 

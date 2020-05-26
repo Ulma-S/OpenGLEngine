@@ -1,4 +1,4 @@
-#include "window.h"
+#include "Window.h"
 
 Window::Window(int width, int height, const char* title)
     :m_window(glfwCreateWindow(width, height, title, nullptr, nullptr))

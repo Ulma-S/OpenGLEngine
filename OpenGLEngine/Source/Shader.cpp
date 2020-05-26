@@ -1,4 +1,4 @@
-#include "shader.h"
+#include "Shader.h"
 
 /* Show compile message of shader object */
 GLboolean PrintShaderInfoLog(GLuint shader, const char *str){

@@ -1,11 +1,12 @@
 #pragma once
-#include "environment.h"
+#include "Environment.h"
 #include <memory>
-#include "object.h"
+#include "Object.h"
 
 class Shape{
 public:
-    Shape(GLint size, GLsizei vertexCount, const Object::Vertex *vertex);
+    Shape(GLint size, GLsizei vertexCount, const Object::Vertex *vertex,
+          GLsizei indexCount = 0, const GLuint *index = nullptr);
     
     void Draw() const;
     

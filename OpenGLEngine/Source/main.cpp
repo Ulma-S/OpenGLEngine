@@ -1,19 +1,27 @@
-#include "environment.h"
+#include "Environment.h"
 #include <cstdlib>
 #include <iostream>
 #include <vector>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include "matrix.h"
-#include "shape.h"
-#include "shader.h"
-#include "window.h"
+#include "Matrix.h"
+#include "Shape.h"
+#include "Shader.h"
+#include "Window.h"
 
-constexpr Object::Vertex rectAngleVertex[] = {
-    {-0.5f, -0.5f},
-    { 0.5f, -0.5f},
-    { 0.5f,  0.5f},
-    {-0.5f,  0.5f}
+constexpr Object::Vertex octahedronVertex[] = {
+    { 0.0f,  1.0f,  0.0f},
+    {-1.0f,  0.0f,  0.0f},
+    { 0.0f, -1.0f,  0.0f},
+    { 1.0f,  0.0f,  0.0f},
+    { 0.0f,  1.0f,  0.0f},
+    { 0.0f,  0.0f,  1.0f},
+    { 0.0f, -1.0f,  0.0f},
+    { 0.0f,  0.0f, -1.0f},
+    {-1.0f,  0.0f,  0.0f},
+    { 0.0f,  0.0f,  1.0f},
+    { 1.0f,  0.0f,  0.0f},
+    { 0.0f,  0.0f, -1.0f}
 };
 
 int main(void) {
@@ -49,7 +57,7 @@ int main(void) {
     const GLint projectionLoc(glGetUniformLocation(program, "projection"));
 
     /* Create shape data */
-    std::unique_ptr<const Shape> shape(new Shape(2, 4, rectAngleVertex));
+    std::unique_ptr<const Shape> shape(new Shape(3, 12, octahedronVertex));
     
     /* Loop until window closed */
     while (window){

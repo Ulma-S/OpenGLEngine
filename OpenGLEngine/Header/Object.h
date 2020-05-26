@@ -1,14 +1,15 @@
 #pragma once
-#include "environment.h"
+#include "Environment.h"
 #include <GL/glew.h>
 
 class Object{
 public:
     struct Vertex{
-        GLfloat position[2];
+        GLfloat position[3];
     };
     
-    Object(GLint size, GLsizei vertexCount, const Vertex *vertex);
+    Object(GLint size, GLsizei vertexCount, const Vertex *vertex,
+           GLsizei indexCount = 0, const GLuint *index = nullptr);
     
     virtual ~Object();
     
@@ -17,6 +18,8 @@ public:
 private:
     GLuint m_vao;
     GLuint m_vbo;
+    
+    GLuint m_ibo;
     
     /* Avoid share pointer */
     Object(const Object &o);
