@@ -218,6 +218,17 @@ public:
         }
         return t;
     }
+    inline void GetNormalMatrix(GLfloat *m) const {
+        m[0] = m_matrix[ 5] * m_matrix[10] - m_matrix[ 6] * m_matrix[ 9];
+        m[1] = m_matrix[ 6] * m_matrix[ 8] - m_matrix[ 4] * m_matrix[10];
+        m[2] = m_matrix[ 4] * m_matrix[ 9] - m_matrix[ 5] * m_matrix[ 8];
+        m[3] = m_matrix[ 9] * m_matrix[ 2] - m_matrix[10] * m_matrix[ 1];
+        m[4] = m_matrix[10] * m_matrix[ 0] - m_matrix[ 8] * m_matrix[ 2];
+        m[5] = m_matrix[ 8] * m_matrix[ 1] - m_matrix[ 9] * m_matrix[ 0];
+        m[6] = m_matrix[ 1] * m_matrix[ 6] - m_matrix[ 2] * m_matrix[ 5];
+        m[7] = m_matrix[ 2] * m_matrix[ 4] - m_matrix[ 0] * m_matrix[ 6];
+        m[8] = m_matrix[ 0] * m_matrix[ 5] - m_matrix[ 1] * m_matrix[ 4];
+    }
     
 private:
     GLfloat m_matrix[16];

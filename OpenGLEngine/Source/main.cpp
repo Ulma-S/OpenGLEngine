@@ -54,47 +54,47 @@
 //};
 
 constexpr Object::Vertex solidCubeVertex[] = {
-    { -1.0f, -1.0f, -1.0f, 0.1f, 0.8f, 0.1f },
-    { -1.0f, -1.0f,  1.0f, 0.1f, 0.8f, 0.1f },
-    { -1.0f,  1.0f,  1.0f, 0.1f, 0.8f, 0.1f },
-    { -1.0f, -1.0f, -1.0f, 0.1f, 0.8f, 0.1f },
-    { -1.0f,  1.0f,  1.0f, 0.1f, 0.8f, 0.1f },
-    { -1.0f,  1.0f, -1.0f, 0.1f, 0.8f, 0.1f },
+    { -1.0f, -1.0f, -1.0f, -1.0f,  0.0f,  0.0f },
+    { -1.0f, -1.0f,  1.0f, -1.0f,  0.0f,  0.0f },
+    { -1.0f,  1.0f,  1.0f, -1.0f,  0.0f,  0.0f },
+    { -1.0f, -1.0f, -1.0f, -1.0f,  0.0f,  0.0f },
+    { -1.0f,  1.0f,  1.0f, -1.0f,  0.0f,  0.0f },
+    { -1.0f,  1.0f, -1.0f, -1.0f,  0.0f,  0.0f },
     
-    {  1.0f, -1.0f, -1.0f, 0.8f, 0.1f, 0.8f },
-    { -1.0f, -1.0f, -1.0f, 0.8f, 0.1f, 0.8f },
-    { -1.0f,  1.0f, -1.0f, 0.8f, 0.1f, 0.8f },
-    {  1.0f, -1.0f, -1.0f, 0.8f, 0.1f, 0.8f },
-    { -1.0f,  1.0f, -1.0f, 0.8f, 0.1f, 0.8f },
-    {  1.0f,  1.0f, -1.0f, 0.8f, 0.1f, 0.8f },
+    {  1.0f, -1.0f, -1.0f,  0.0f,  0.0f, -1.0f },
+    { -1.0f, -1.0f, -1.0f,  0.0f,  0.0f, -1.0f },
+    { -1.0f,  1.0f, -1.0f,  0.0f,  0.0f, -1.0f },
+    {  1.0f, -1.0f, -1.0f,  0.0f,  0.0f, -1.0f },
+    { -1.0f,  1.0f, -1.0f,  0.0f,  0.0f, -1.0f },
+    {  1.0f,  1.0f, -1.0f,  0.0f,  0.0f, -1.0f },
     
-    { -1.0f, -1.0f, -1.0f, 0.1f, 0.8f, 0.8f },
-    {  1.0f, -1.0f, -1.0f, 0.1f, 0.8f, 0.8f },
-    {  1.0f, -1.0f,  1.0f, 0.1f, 0.8f, 0.8f },
-    { -1.0f, -1.0f, -1.0f, 0.1f, 0.8f, 0.8f },
-    {  1.0f, -1.0f,  1.0f, 0.1f, 0.8f, 0.8f },
-    { -1.0f, -1.0f,  1.0f, 0.1f, 0.8f, 0.8f },
+    { -1.0f, -1.0f, -1.0f,  0.0f, -1.0f,  0.0f },
+    {  1.0f, -1.0f, -1.0f,  0.0f, -1.0f,  0.0f },
+    {  1.0f, -1.0f,  1.0f,  0.0f, -1.0f,  0.0f },
+    { -1.0f, -1.0f, -1.0f,  0.0f, -1.0f,  0.0f },
+    {  1.0f, -1.0f,  1.0f,  0.0f, -1.0f,  0.0f },
+    { -1.0f, -1.0f,  1.0f,  0.0f, -1.0f,  0.0f },
     
-    {  1.0f, -1.0f,  1.0f, 0.1f, 0.1f, 0.8f },
-    {  1.0f, -1.0f, -1.0f, 0.1f, 0.1f, 0.8f },
-    {  1.0f,  1.0f, -1.0f, 0.1f, 0.1f, 0.8f },
-    {  1.0f, -1.0f,  1.0f, 0.1f, 0.1f, 0.8f },
-    {  1.0f,  1.0f, -1.0f, 0.1f, 0.1f, 0.8f },
-    {  1.0f,  1.0f,  1.0f, 0.1f, 0.1f, 0.8f },
+    {  1.0f, -1.0f,  1.0f,  1.0f,  0.0f,  0.0f },
+    {  1.0f, -1.0f, -1.0f,  1.0f,  0.0f,  0.0f },
+    {  1.0f,  1.0f, -1.0f,  1.0f,  0.0f,  0.0f },
+    {  1.0f, -1.0f,  1.0f,  1.0f,  0.0f,  0.0f },
+    {  1.0f,  1.0f, -1.0f,  1.0f,  0.0f,  0.0f },
+    {  1.0f,  1.0f,  1.0f,  1.0f,  0.0f,  0.0f },
     
-    { -1.0f,  1.0f, -1.0f, 0.8f, 0.1f, 0.1f },
-    { -1.0f,  1.0f,  1.0f, 0.8f, 0.1f, 0.1f },
-    {  1.0f,  1.0f,  1.0f, 0.8f, 0.1f, 0.1f },
-    { -1.0f,  1.0f, -1.0f, 0.8f, 0.1f, 0.1f },
-    {  1.0f,  1.0f,  1.0f, 0.8f, 0.1f, 0.1f },
-    {  1.0f,  1.0f, -1.0f, 0.8f, 0.1f, 0.1f },
+    { -1.0f,  1.0f, -1.0f,  0.0f,  1.0f,  0.0f },
+    { -1.0f,  1.0f,  1.0f,  0.0f,  1.0f,  0.0f },
+    {  1.0f,  1.0f,  1.0f,  0.0f,  1.0f,  0.0f },
+    { -1.0f,  1.0f, -1.0f,  0.0f,  1.0f,  0.0f },
+    {  1.0f,  1.0f,  1.0f,  0.0f,  1.0f,  0.0f },
+    {  1.0f,  1.0f, -1.0f,  0.0f,  1.0f,  0.0f },
     
-    { -1.0f, -1.0f,  1.0f, 0.8f, 0.8f, 0.1f },
-    {  1.0f, -1.0f,  1.0f, 0.8f, 0.8f, 0.1f },
-    {  1.0f,  1.0f,  1.0f, 0.8f, 0.8f, 0.1f },
-    { -1.0f, -1.0f,  1.0f, 0.8f, 0.8f, 0.1f },
-    {  1.0f,  1.0f,  1.0f, 0.8f, 0.8f, 0.1f },
-    { -1.0f,  1.0f,  1.0f, 0.8f, 0.8f, 0.1f }
+    { -1.0f, -1.0f,  1.0f,  0.0f,  0.0f,  1.0f },
+    {  1.0f, -1.0f,  1.0f,  0.0f,  0.0f,  1.0f },
+    {  1.0f,  1.0f,  1.0f,  0.0f,  0.0f,  1.0f },
+    { -1.0f, -1.0f,  1.0f,  0.0f,  0.0f,  1.0f },
+    {  1.0f,  1.0f,  1.0f,  0.0f,  0.0f,  1.0f },
+    { -1.0f,  1.0f,  1.0f,  0.0f,  0.0f,  1.0f }
 };
 
 constexpr GLuint solidCubeIndex[] = {
@@ -147,6 +147,7 @@ int main(void) {
     /* Get uniform variable location */
     const GLint modelviewLoc(glGetUniformLocation(program, "modelview"));
     const GLint projectionLoc(glGetUniformLocation(program, "projection"));
+    const GLint normalMatrixLoc(glGetUniformLocation(program, "normalMatrix"));
 
     /* Create shape data */
     std::unique_ptr<const Shape> shape(new SolidShapeIndex(3, 36, solidCubeVertex, 36, solidCubeIndex));
@@ -171,10 +172,15 @@ int main(void) {
                         
         const Matrix view(Matrix::Lookat(3.0f, 4.0f, 5.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f));
         
+        GLfloat normalMatrix[9];
+        
         const Matrix modelview(view * model);
+        
+        modelview.GetNormalMatrix(normalMatrix);
         
         glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, projection.Data());
         glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelview.Data());
+        glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, normalMatrix);
         
         std::cout << glfwGetTime() << std::endl;
         
@@ -183,7 +189,10 @@ int main(void) {
         
         const Matrix modelview1(modelview * Matrix::Translate(0.0f, 0.0f, 3.0f));
         
+        modelview1.GetNormalMatrix(normalMatrix);
+        
         glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelview1.Data());
+        glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, normalMatrix);
         
         shape->Draw();
         

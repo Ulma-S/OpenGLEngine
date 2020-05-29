@@ -7,7 +7,7 @@ public:
     struct Vertex{
         GLfloat position[3];
         
-        GLfloat color[3];
+        GLfloat normal[3];
     };
     
     Object(GLint size, GLsizei vertexCount, const Vertex *vertex,

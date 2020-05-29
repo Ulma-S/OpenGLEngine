@@ -10,7 +10,7 @@ Object::Object(GLint size, GLsizei vertexCount, const Object::Vertex *vertex, GL
     
     glVertexAttribPointer(0, size, GL_FLOAT, GL_FALSE, sizeof(Vertex), static_cast<Vertex*>(0)->position);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), static_cast<Vertex*>(0)->color);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), static_cast<Vertex*>(0)->normal);
     glEnableVertexAttribArray(1);
     
     glGenBuffers(1, &m_ibo);
