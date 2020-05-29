@@ -27,16 +27,16 @@
 //    { 0.0f,  0.0f, -1.0f}
 //};
 
-constexpr Object::Vertex cubeVertex[] = {
-    {-1.0f, -1.0f, -1.0f,  0.0f,  0.0f,  0.0f},
-    {-1.0f, -1.0f,  1.0f,  0.0f,  0.0f,  0.8f},
-    {-1.0f,  1.0f,  1.0f,  0.0f,  0.8f,  0.0f},
-    {-1.0f,  1.0f, -1.0f,  0.0f,  0.8f,  0.8f},
-    { 1.0f,  1.0f, -1.0f,  0.8f,  0.0f,  0.0f},
-    { 1.0f, -1.0f, -1.0f,  0.8f,  0.0f,  0.8f},
-    { 1.0f, -1.0f,  1.0f,  0.8f,  0.8f,  0.0f},
-    { 1.0f,  1.0f,  1.0f,  0.8f,  0.8f,  0.8f}
-};
+//constexpr Object::Vertex cubeVertex[] = {
+//    {-1.0f, -1.0f, -1.0f,  0.0f,  0.0f,  0.0f},
+//    {-1.0f, -1.0f,  1.0f,  0.0f,  0.0f,  0.8f},
+//    {-1.0f,  1.0f,  1.0f,  0.0f,  0.8f,  0.0f},
+//    {-1.0f,  1.0f, -1.0f,  0.0f,  0.8f,  0.8f},
+//    { 1.0f,  1.0f, -1.0f,  0.8f,  0.0f,  0.0f},
+//    { 1.0f, -1.0f, -1.0f,  0.8f,  0.0f,  0.8f},
+//    { 1.0f, -1.0f,  1.0f,  0.8f,  0.8f,  0.0f},
+//    { 1.0f,  1.0f,  1.0f,  0.8f,  0.8f,  0.8f}
+//};
 
 //constexpr GLuint wireCubeIndex[] = {
 //    1, 0,
@@ -128,6 +128,16 @@ int main(void) {
     /* Set background color */
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     
+    /* Enable back culling */
+    glFrontFace(GL_CCW);
+    glCullFace(GL_BACK);
+    glEnable(GL_CULL_FACE);
+    
+    /* Enable depth buffer*/
+    glClearDepth(1.0f);
+    glDepthFunc(GL_LESS);
+    glEnable(GL_DEPTH_TEST);
+    
     /* Set viewport */
     glViewport(0, 0, VIEW_WIDTH, VIEW_HEIGHT);
     
@@ -146,7 +156,7 @@ int main(void) {
     /* Loop until window closed */
     while (window){
         /* Reset window color */
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         glUseProgram(program);
         
@@ -169,6 +179,12 @@ int main(void) {
         std::cout << glfwGetTime() << std::endl;
         
         /* Draw shape */
+        shape->Draw();
+        
+        const Matrix modelview1(modelview * Matrix::Translate(0.0f, 0.0f, 3.0f));
+        
+        glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelview1.Data());
+        
         shape->Draw();
         
         /* Swap front and back buffers */

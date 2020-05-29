@@ -14,7 +14,7 @@
 static const std::string SHADER_PATH = "Shader/";
 #endif // !SHADER_PATH_
 
-#define VIEW_WIDTH WINOW_WIDTH * 2
+#define VIEW_WIDTH WINDOW_WIDTH * 2
 #define VIEW_HEIGHT WINDOW_HEIGHT * 2
 
 #elif _WIN32 | _WIN64
