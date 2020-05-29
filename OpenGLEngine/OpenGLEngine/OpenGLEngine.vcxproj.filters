@@ -41,6 +41,18 @@
     <ClInclude Include="..\Header\window.h">
       <Filter>Header</Filter>
     </ClInclude>
+    <ClInclude Include="..\Header\Matrix.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Header\ShapeIndex.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Header\SolidShape.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Header\SolidShapeIndex.h">
+      <Filter>Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\main.cpp">
@@ -56,6 +68,18 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\window.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Matrix.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\ShapeIndex.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\SolidShape.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\SolidShapeIndex.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

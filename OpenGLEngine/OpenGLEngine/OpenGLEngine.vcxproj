@@ -152,16 +152,24 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Header\environment.h" />
+    <ClInclude Include="..\Header\Matrix.h" />
     <ClInclude Include="..\Header\object.h" />
     <ClInclude Include="..\Header\shader.h" />
     <ClInclude Include="..\Header\shape.h" />
+    <ClInclude Include="..\Header\ShapeIndex.h" />
+    <ClInclude Include="..\Header\SolidShape.h" />
+    <ClInclude Include="..\Header\SolidShapeIndex.h" />
     <ClInclude Include="..\Header\window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\main.cpp" />
+    <ClCompile Include="..\Source\Matrix.cpp" />
     <ClCompile Include="..\Source\object.cpp" />
     <ClCompile Include="..\Source\shader.cpp" />
     <ClCompile Include="..\Source\shape.cpp" />
+    <ClCompile Include="..\Source\ShapeIndex.cpp" />
+    <ClCompile Include="..\Source\SolidShape.cpp" />
+    <ClCompile Include="..\Source\SolidShapeIndex.cpp" />
     <ClCompile Include="..\Source\window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

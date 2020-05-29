@@ -129,7 +129,7 @@ int main(void) {
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     
     /* Set viewport */
-    glViewport(0, 0, WINDOW_WIDTH*2, WINDOW_HEIGHT*2);
+    glViewport(0, 0, VIEW_WIDTH, VIEW_HEIGHT);
     
     /* Create shader program object */
     const GLuint program(LoadProgram("point.vert", "point.frag"));
