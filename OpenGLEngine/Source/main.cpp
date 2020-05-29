@@ -8,6 +8,8 @@
 #include "Shape.h"
 #include "ShapeIndex.h"
 #include "Shader.h"
+#include "SolidShape.h"
+#include "SolidShapeIndex.h"
 #include "Window.h"
 
 //constexpr Object::Vertex octahedronVertex[] = {
@@ -36,19 +38,72 @@ constexpr Object::Vertex cubeVertex[] = {
     { 1.0f,  1.0f,  1.0f,  0.8f,  0.8f,  0.8f}
 };
 
-constexpr GLuint wireCubeIndex[] = {
-    1, 0,
-    2, 7,
-    3, 0,
-    4, 7,
-    5, 0,
-    6, 7,
-    1, 2,
-    2, 3,
-    3, 4,
-    4, 5,
-    5, 6,
-    6, 1
+//constexpr GLuint wireCubeIndex[] = {
+//    1, 0,
+//    2, 7,
+//    3, 0,
+//    4, 7,
+//    5, 0,
+//    6, 7,
+//    1, 2,
+//    2, 3,
+//    3, 4,
+//    4, 5,
+//    5, 6,
+//    6, 1
+//};
+
+constexpr Object::Vertex solidCubeVertex[] = {
+    { -1.0f, -1.0f, -1.0f, 0.1f, 0.8f, 0.1f },
+    { -1.0f, -1.0f,  1.0f, 0.1f, 0.8f, 0.1f },
+    { -1.0f,  1.0f,  1.0f, 0.1f, 0.8f, 0.1f },
+    { -1.0f, -1.0f, -1.0f, 0.1f, 0.8f, 0.1f },
+    { -1.0f,  1.0f,  1.0f, 0.1f, 0.8f, 0.1f },
+    { -1.0f,  1.0f, -1.0f, 0.1f, 0.8f, 0.1f },
+    
+    {  1.0f, -1.0f, -1.0f, 0.8f, 0.1f, 0.8f },
+    { -1.0f, -1.0f, -1.0f, 0.8f, 0.1f, 0.8f },
+    { -1.0f,  1.0f, -1.0f, 0.8f, 0.1f, 0.8f },
+    {  1.0f, -1.0f, -1.0f, 0.8f, 0.1f, 0.8f },
+    { -1.0f,  1.0f, -1.0f, 0.8f, 0.1f, 0.8f },
+    {  1.0f,  1.0f, -1.0f, 0.8f, 0.1f, 0.8f },
+    
+    { -1.0f, -1.0f, -1.0f, 0.1f, 0.8f, 0.8f },
+    {  1.0f, -1.0f, -1.0f, 0.1f, 0.8f, 0.8f },
+    {  1.0f, -1.0f,  1.0f, 0.1f, 0.8f, 0.8f },
+    { -1.0f, -1.0f, -1.0f, 0.1f, 0.8f, 0.8f },
+    {  1.0f, -1.0f,  1.0f, 0.1f, 0.8f, 0.8f },
+    { -1.0f, -1.0f,  1.0f, 0.1f, 0.8f, 0.8f },
+    
+    {  1.0f, -1.0f,  1.0f, 0.1f, 0.1f, 0.8f },
+    {  1.0f, -1.0f, -1.0f, 0.1f, 0.1f, 0.8f },
+    {  1.0f,  1.0f, -1.0f, 0.1f, 0.1f, 0.8f },
+    {  1.0f, -1.0f,  1.0f, 0.1f, 0.1f, 0.8f },
+    {  1.0f,  1.0f, -1.0f, 0.1f, 0.1f, 0.8f },
+    {  1.0f,  1.0f,  1.0f, 0.1f, 0.1f, 0.8f },
+    
+    { -1.0f,  1.0f, -1.0f, 0.8f, 0.1f, 0.1f },
+    { -1.0f,  1.0f,  1.0f, 0.8f, 0.1f, 0.1f },
+    {  1.0f,  1.0f,  1.0f, 0.8f, 0.1f, 0.1f },
+    { -1.0f,  1.0f, -1.0f, 0.8f, 0.1f, 0.1f },
+    {  1.0f,  1.0f,  1.0f, 0.8f, 0.1f, 0.1f },
+    {  1.0f,  1.0f, -1.0f, 0.8f, 0.1f, 0.1f },
+    
+    { -1.0f, -1.0f,  1.0f, 0.8f, 0.8f, 0.1f },
+    {  1.0f, -1.0f,  1.0f, 0.8f, 0.8f, 0.1f },
+    {  1.0f,  1.0f,  1.0f, 0.8f, 0.8f, 0.1f },
+    { -1.0f, -1.0f,  1.0f, 0.8f, 0.8f, 0.1f },
+    {  1.0f,  1.0f,  1.0f, 0.8f, 0.8f, 0.1f },
+    { -1.0f,  1.0f,  1.0f, 0.8f, 0.8f, 0.1f }
+};
+
+constexpr GLuint solidCubeIndex[] = {
+     0,  1,  2,  3,  4,  5,
+     6,  7,  8,  9, 10, 11,
+    12, 13, 14, 15, 16, 17,
+    18, 19, 20, 21, 22, 23,
+    24, 25, 26, 27, 28, 29,
+    30, 31, 32, 33, 34, 35
 };
 
 int main(void) {
@@ -84,7 +139,9 @@ int main(void) {
     const GLint projectionLoc(glGetUniformLocation(program, "projection"));
 
     /* Create shape data */
-    std::unique_ptr<const Shape> shape(new ShapeIndex(3, 8, cubeVertex, 24, wireCubeIndex));
+    std::unique_ptr<const Shape> shape(new SolidShapeIndex(3, 36, solidCubeVertex, 36, solidCubeIndex));
+    
+    glfwSetTime(0.0f);
     
     /* Loop until window closed */
     while (window){
@@ -99,7 +156,8 @@ int main(void) {
         const Matrix projection(Matrix::Perspective(fovy, aspect, 1.0f, 10.0f));
         
         const GLfloat *const location(window.GetLocation());
-        const Matrix model(Matrix::Translate(location[0], location[1], 0.0f));
+        const Matrix r(Matrix::Rotate(static_cast<GLfloat>(glfwGetTime()), 0.0f, 1.0f, 0.0f));
+        const Matrix model(Matrix::Translate(location[0], location[1], 0.0f) * r);
                         
         const Matrix view(Matrix::Lookat(3.0f, 4.0f, 5.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f));
         
@@ -107,6 +165,8 @@ int main(void) {
         
         glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, projection.Data());
         glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelview.Data());
+        
+        std::cout << glfwGetTime() << std::endl;
         
         /* Draw shape */
         shape->Draw();

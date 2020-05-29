@@ -47,11 +47,7 @@ Window::~Window(){
 
 
 Window::operator bool(){
-    if(keyStatus == GLFW_RELEASE){
-        glfwWaitEvents();
-    }else{
-        glfwPollEvents();
-    }
+    glfwPollEvents();
     
     float speed = 6.0f;
     if(glfwGetKey(m_window, GLFW_KEY_LEFT) != GLFW_RELEASE){
