@@ -1,5 +1,6 @@
 #include "Environment.h"
 #include <cstdlib>
+#include <cmath>
 #include <iostream>
 #include <vector>
 #include <GL/glew.h>
@@ -148,9 +149,46 @@ int main(void) {
     const GLint modelviewLoc(glGetUniformLocation(program, "modelview"));
     const GLint projectionLoc(glGetUniformLocation(program, "projection"));
     const GLint normalMatrixLoc(glGetUniformLocation(program, "normalMatrix"));
+    
+    /* Render sphere */
+    const int slices(16), stacks(8);
+    
+    std::vector<Object::Vertex> solidSphereVertex;
+    
+    for(int j=0; j<=stacks; ++j){
+        const float t(static_cast<float>(j)/static_cast<float>(stacks));
+        const float y(cosf(PI * t)), r(sinf(PI * t));
+        for(int i=0; i<=slices; ++i){
+            const float s(static_cast<float>(i)/static_cast<float>(slices));
+            const float z(r * cosf(PI * 2 * s)), x(r * sinf(PI * 2 * s));
+            const Object::Vertex v = {x, y, z, x, y, z};
+            solidSphereVertex.emplace_back(v);
+        }
+    }
+    
+    std::vector<GLuint> solidSphereIndex;
+    
+    for(int j=0; j<stacks; ++j){
+        const int k((slices+1) * j);
+        for(int i=0; i<slices; ++i){
+            const GLuint k0(k + i);
+            const GLuint k1(k0 + 1);
+            const GLuint k2(k1 + slices);
+            const GLuint k3(k2 + 1);
+            
+            solidSphereIndex.emplace_back(k0);
+            solidSphereIndex.emplace_back(k2);
+            solidSphereIndex.emplace_back(k3);
+            
+            solidSphereIndex.emplace_back(k0);
+            solidSphereIndex.emplace_back(k3);
+            solidSphereIndex.emplace_back(k1);
+        }
+    }
+    
 
     /* Create shape data */
-    std::unique_ptr<const Shape> shape(new SolidShapeIndex(3, 36, solidCubeVertex, 36, solidCubeIndex));
+    std::unique_ptr<const Shape> shape(new SolidShapeIndex(3, static_cast<GLsizei>(solidSphereVertex.size()), solidSphereVertex.data(), static_cast<GLsizei>(solidSphereIndex.size()), solidSphereIndex.data()));
     
     glfwSetTime(0.0f);
     
