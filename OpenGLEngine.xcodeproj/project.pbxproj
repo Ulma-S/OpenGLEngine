@@ -31,6 +31,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D913CF222481CF4200C73EB8 /* Vector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vector.h; sourceTree = "<group>"; };
 		D916D8E8247AB13B0046EFF5 /* Shape.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shape.cpp; sourceTree = "<group>"; };
 		D916D8E9247AB13B0046EFF5 /* Shape.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shape.h; sourceTree = "<group>"; };
 		D95E3001247A9758003E339B /* Object.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
@@ -106,6 +107,7 @@
 				D9FC2528247DCF7900C9CAAA /* ShapeIndex.h */,
 				D9C768142480C5F100B4092D /* SolidShape.h */,
 				D9FC252B247DD80800C9CAAA /* SolidShapeIndex.h */,
+				D913CF222481CF4200C73EB8 /* Vector.h */,
 				D9EB8017247B23DE00173315 /* Window.h */,
 			);
 			path = Header;

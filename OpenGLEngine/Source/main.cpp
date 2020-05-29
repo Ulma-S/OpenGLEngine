@@ -11,6 +11,7 @@
 #include "Shader.h"
 #include "SolidShape.h"
 #include "SolidShapeIndex.h"
+#include "Vector.h"
 #include "Window.h"
 
 //constexpr Object::Vertex octahedronVertex[] = {
@@ -54,58 +55,58 @@
 //    6, 1
 //};
 
-constexpr Object::Vertex solidCubeVertex[] = {
-    { -1.0f, -1.0f, -1.0f, -1.0f,  0.0f,  0.0f },
-    { -1.0f, -1.0f,  1.0f, -1.0f,  0.0f,  0.0f },
-    { -1.0f,  1.0f,  1.0f, -1.0f,  0.0f,  0.0f },
-    { -1.0f, -1.0f, -1.0f, -1.0f,  0.0f,  0.0f },
-    { -1.0f,  1.0f,  1.0f, -1.0f,  0.0f,  0.0f },
-    { -1.0f,  1.0f, -1.0f, -1.0f,  0.0f,  0.0f },
-    
-    {  1.0f, -1.0f, -1.0f,  0.0f,  0.0f, -1.0f },
-    { -1.0f, -1.0f, -1.0f,  0.0f,  0.0f, -1.0f },
-    { -1.0f,  1.0f, -1.0f,  0.0f,  0.0f, -1.0f },
-    {  1.0f, -1.0f, -1.0f,  0.0f,  0.0f, -1.0f },
-    { -1.0f,  1.0f, -1.0f,  0.0f,  0.0f, -1.0f },
-    {  1.0f,  1.0f, -1.0f,  0.0f,  0.0f, -1.0f },
-    
-    { -1.0f, -1.0f, -1.0f,  0.0f, -1.0f,  0.0f },
-    {  1.0f, -1.0f, -1.0f,  0.0f, -1.0f,  0.0f },
-    {  1.0f, -1.0f,  1.0f,  0.0f, -1.0f,  0.0f },
-    { -1.0f, -1.0f, -1.0f,  0.0f, -1.0f,  0.0f },
-    {  1.0f, -1.0f,  1.0f,  0.0f, -1.0f,  0.0f },
-    { -1.0f, -1.0f,  1.0f,  0.0f, -1.0f,  0.0f },
-    
-    {  1.0f, -1.0f,  1.0f,  1.0f,  0.0f,  0.0f },
-    {  1.0f, -1.0f, -1.0f,  1.0f,  0.0f,  0.0f },
-    {  1.0f,  1.0f, -1.0f,  1.0f,  0.0f,  0.0f },
-    {  1.0f, -1.0f,  1.0f,  1.0f,  0.0f,  0.0f },
-    {  1.0f,  1.0f, -1.0f,  1.0f,  0.0f,  0.0f },
-    {  1.0f,  1.0f,  1.0f,  1.0f,  0.0f,  0.0f },
-    
-    { -1.0f,  1.0f, -1.0f,  0.0f,  1.0f,  0.0f },
-    { -1.0f,  1.0f,  1.0f,  0.0f,  1.0f,  0.0f },
-    {  1.0f,  1.0f,  1.0f,  0.0f,  1.0f,  0.0f },
-    { -1.0f,  1.0f, -1.0f,  0.0f,  1.0f,  0.0f },
-    {  1.0f,  1.0f,  1.0f,  0.0f,  1.0f,  0.0f },
-    {  1.0f,  1.0f, -1.0f,  0.0f,  1.0f,  0.0f },
-    
-    { -1.0f, -1.0f,  1.0f,  0.0f,  0.0f,  1.0f },
-    {  1.0f, -1.0f,  1.0f,  0.0f,  0.0f,  1.0f },
-    {  1.0f,  1.0f,  1.0f,  0.0f,  0.0f,  1.0f },
-    { -1.0f, -1.0f,  1.0f,  0.0f,  0.0f,  1.0f },
-    {  1.0f,  1.0f,  1.0f,  0.0f,  0.0f,  1.0f },
-    { -1.0f,  1.0f,  1.0f,  0.0f,  0.0f,  1.0f }
-};
+//constexpr Object::Vertex solidCubeVertex[] = {
+//    { -1.0f, -1.0f, -1.0f, -1.0f,  0.0f,  0.0f },
+//    { -1.0f, -1.0f,  1.0f, -1.0f,  0.0f,  0.0f },
+//    { -1.0f,  1.0f,  1.0f, -1.0f,  0.0f,  0.0f },
+//    { -1.0f, -1.0f, -1.0f, -1.0f,  0.0f,  0.0f },
+//    { -1.0f,  1.0f,  1.0f, -1.0f,  0.0f,  0.0f },
+//    { -1.0f,  1.0f, -1.0f, -1.0f,  0.0f,  0.0f },
+//
+//    {  1.0f, -1.0f, -1.0f,  0.0f,  0.0f, -1.0f },
+//    { -1.0f, -1.0f, -1.0f,  0.0f,  0.0f, -1.0f },
+//    { -1.0f,  1.0f, -1.0f,  0.0f,  0.0f, -1.0f },
+//    {  1.0f, -1.0f, -1.0f,  0.0f,  0.0f, -1.0f },
+//    { -1.0f,  1.0f, -1.0f,  0.0f,  0.0f, -1.0f },
+//    {  1.0f,  1.0f, -1.0f,  0.0f,  0.0f, -1.0f },
+//
+//    { -1.0f, -1.0f, -1.0f,  0.0f, -1.0f,  0.0f },
+//    {  1.0f, -1.0f, -1.0f,  0.0f, -1.0f,  0.0f },
+//    {  1.0f, -1.0f,  1.0f,  0.0f, -1.0f,  0.0f },
+//    { -1.0f, -1.0f, -1.0f,  0.0f, -1.0f,  0.0f },
+//    {  1.0f, -1.0f,  1.0f,  0.0f, -1.0f,  0.0f },
+//    { -1.0f, -1.0f,  1.0f,  0.0f, -1.0f,  0.0f },
+//
+//    {  1.0f, -1.0f,  1.0f,  1.0f,  0.0f,  0.0f },
+//    {  1.0f, -1.0f, -1.0f,  1.0f,  0.0f,  0.0f },
+//    {  1.0f,  1.0f, -1.0f,  1.0f,  0.0f,  0.0f },
+//    {  1.0f, -1.0f,  1.0f,  1.0f,  0.0f,  0.0f },
+//    {  1.0f,  1.0f, -1.0f,  1.0f,  0.0f,  0.0f },
+//    {  1.0f,  1.0f,  1.0f,  1.0f,  0.0f,  0.0f },
+//
+//    { -1.0f,  1.0f, -1.0f,  0.0f,  1.0f,  0.0f },
+//    { -1.0f,  1.0f,  1.0f,  0.0f,  1.0f,  0.0f },
+//    {  1.0f,  1.0f,  1.0f,  0.0f,  1.0f,  0.0f },
+//    { -1.0f,  1.0f, -1.0f,  0.0f,  1.0f,  0.0f },
+//    {  1.0f,  1.0f,  1.0f,  0.0f,  1.0f,  0.0f },
+//    {  1.0f,  1.0f, -1.0f,  0.0f,  1.0f,  0.0f },
+//
+//    { -1.0f, -1.0f,  1.0f,  0.0f,  0.0f,  1.0f },
+//    {  1.0f, -1.0f,  1.0f,  0.0f,  0.0f,  1.0f },
+//    {  1.0f,  1.0f,  1.0f,  0.0f,  0.0f,  1.0f },
+//    { -1.0f, -1.0f,  1.0f,  0.0f,  0.0f,  1.0f },
+//    {  1.0f,  1.0f,  1.0f,  0.0f,  0.0f,  1.0f },
+//    { -1.0f,  1.0f,  1.0f,  0.0f,  0.0f,  1.0f }
+//};
 
-constexpr GLuint solidCubeIndex[] = {
-     0,  1,  2,  3,  4,  5,
-     6,  7,  8,  9, 10, 11,
-    12, 13, 14, 15, 16, 17,
-    18, 19, 20, 21, 22, 23,
-    24, 25, 26, 27, 28, 29,
-    30, 31, 32, 33, 34, 35
-};
+//constexpr GLuint solidCubeIndex[] = {
+//     0,  1,  2,  3,  4,  5,
+//     6,  7,  8,  9, 10, 11,
+//    12, 13, 14, 15, 16, 17,
+//    18, 19, 20, 21, 22, 23,
+//    24, 25, 26, 27, 28, 29,
+//    30, 31, 32, 33, 34, 35
+//};
 
 int main(void) {
     /* Initialize GLFW */
@@ -149,6 +150,10 @@ int main(void) {
     const GLint modelviewLoc(glGetUniformLocation(program, "modelview"));
     const GLint projectionLoc(glGetUniformLocation(program, "projection"));
     const GLint normalMatrixLoc(glGetUniformLocation(program, "normalMatrix"));
+    const GLint LposLoc(glGetUniformLocation(program, "Lpos"));
+    const GLint LambLoc(glGetUniformLocation(program, "Lamb"));
+    const GLint LdiffLoc(glGetUniformLocation(program, "Ldiff"));
+    const GLint LspecLoc(glGetUniformLocation(program, "Lspec"));
     
     /* Render sphere */
     const int slices(16), stacks(8);
@@ -190,6 +195,12 @@ int main(void) {
     /* Create shape data */
     std::unique_ptr<const Shape> shape(new SolidShapeIndex(3, static_cast<GLsizei>(solidSphereVertex.size()), solidSphereVertex.data(), static_cast<GLsizei>(solidSphereIndex.size()), solidSphereIndex.data()));
     
+    /* Set lighting data */
+    static constexpr Vector Lpos = { 0.0f, 0.0f, 5.0f, 1.0f };
+    static constexpr GLfloat Lamb[] = { 0.2f, 0.1f, 0.1f };
+    static constexpr GLfloat Ldiff[] = { 1.0f, 0.5f, 0.5f };
+    static constexpr GLfloat Lspec[] = { 1.0f, 0.5f, 0.5f };
+    
     glfwSetTime(0.0f);
     
     /* Loop until window closed */
@@ -218,9 +229,11 @@ int main(void) {
         
         glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, projection.Data());
         glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelview.Data());
-        glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, normalMatrix);
-        
-        std::cout << glfwGetTime() << std::endl;
+        glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, normalMatrix);        
+        glUniform4fv(LposLoc, 1, (view * Lpos).data());
+        glUniform3fv(LambLoc, 1, Lamb);
+        glUniform3fv(LdiffLoc, 1, Ldiff);
+        glUniform3fv(LspecLoc, 1, Lspec);
         
         /* Draw shape */
         shape->Draw();
