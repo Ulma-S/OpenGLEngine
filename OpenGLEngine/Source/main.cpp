@@ -196,10 +196,11 @@ int main(void) {
     std::unique_ptr<const Shape> shape(new SolidShapeIndex(3, static_cast<GLsizei>(solidSphereVertex.size()), solidSphereVertex.data(), static_cast<GLsizei>(solidSphereIndex.size()), solidSphereIndex.data()));
     
     /* Set lighting data */
-    static constexpr Vector Lpos = { 0.0f, 0.0f, 5.0f, 1.0f };
-    static constexpr GLfloat Lamb[] = { 0.2f, 0.1f, 0.1f };
-    static constexpr GLfloat Ldiff[] = { 1.0f, 0.5f, 0.5f };
-    static constexpr GLfloat Lspec[] = { 1.0f, 0.5f, 0.5f };
+    static constexpr int Lcount(2);
+    static constexpr Vector Lpos[] = { 0.0f, 0.0f, 5.0f, 1.0f, 8.0f, 0.0f, 0.0f, 1.0f };
+    static constexpr GLfloat Lamb[] = { 0.2f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f };
+    static constexpr GLfloat Ldiff[] = { 1.0f, 0.5f, 0.5f, 0.9f, 0.9f, 0.9f };
+    static constexpr GLfloat Lspec[] = { 1.0f, 0.5f, 0.5f, 0.9f, 0.9f, 0.9f };
     
     glfwSetTime(0.0f);
     
@@ -229,11 +230,13 @@ int main(void) {
         
         glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, projection.Data());
         glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelview.Data());
-        glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, normalMatrix);        
-        glUniform4fv(LposLoc, 1, (view * Lpos).data());
-        glUniform3fv(LambLoc, 1, Lamb);
-        glUniform3fv(LdiffLoc, 1, Ldiff);
-        glUniform3fv(LspecLoc, 1, Lspec);
+        glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, normalMatrix);
+        for(int i=0; i<Lcount; ++i){
+            glUniform4fv(LposLoc+i, 1, (view * Lpos[i]).data());
+        }
+        glUniform3fv(LambLoc, Lcount, Lamb);
+        glUniform3fv(LdiffLoc, Lcount, Ldiff);
+        glUniform3fv(LspecLoc, Lcount, Lspec);
         
         /* Draw shape */
         shape->Draw();
