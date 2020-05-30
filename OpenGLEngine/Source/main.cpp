@@ -213,7 +213,7 @@ int main(void) {
         { 0.1f, 0.1f, 0.5f, 0.1f, 0.1f, 0.5f, 0.4f, 0.4f, 0.4f, 60.0f }
     };
     
-    const Uniform<Material> material[] = { &color[0], &color[1] };
+    const Uniform<Material> material(color, 2);
     
     glfwSetTime(0.0f);
     
@@ -252,7 +252,7 @@ int main(void) {
         glUniform3fv(LspecLoc, Lcount, Lspec);
         
         /* Draw shape */
-        material[0].Select(0);
+        material.Select(0, 0);
         shape->Draw();
         
         const Matrix modelview1(modelview * Matrix::Translate(0.0f, 0.0f, 3.0f));
@@ -262,7 +262,7 @@ int main(void) {
         glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelview1.Data());
         glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, normalMatrix);
         
-        material[1].Select(0);
+        material.Select(0, 1);
         shape->Draw();
         
         /* Swap front and back buffers */
