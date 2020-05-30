@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D916D8EA247AB13B0046EFF5 /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D916D8E8247AB13B0046EFF5 /* Shape.cpp */; };
 		D95E3003247A9758003E339B /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D95E3001247A9758003E339B /* Object.cpp */; };
+		D9642AF524828A7000279F4D /* Uniform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9642AF324828A7000279F4D /* Uniform.cpp */; };
 		D96DE505247D2FB500BCB615 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D96DE503247D2FB500BCB615 /* Matrix.cpp */; };
 		D9C768152480C5F100B4092D /* SolidShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9C768132480C5F100B4092D /* SolidShape.cpp */; };
 		D9EB8018247B23DE00173315 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9EB8016247B23DE00173315 /* Window.cpp */; };
@@ -34,9 +35,12 @@
 		D913CF222481CF4200C73EB8 /* Vector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vector.h; sourceTree = "<group>"; };
 		D916D8E8247AB13B0046EFF5 /* Shape.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shape.cpp; sourceTree = "<group>"; };
 		D916D8E9247AB13B0046EFF5 /* Shape.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shape.h; sourceTree = "<group>"; };
+		D95B3BA62482890900B45D2C /* Material.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
 		D95E3001247A9758003E339B /* Object.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
 		D95E3002247A9758003E339B /* Object.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
 		D95E3004247A97DF003E339B /* Environment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
+		D9642AF324828A7000279F4D /* Uniform.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Uniform.cpp; sourceTree = "<group>"; };
+		D9642AF424828A7000279F4D /* Uniform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Uniform.h; sourceTree = "<group>"; };
 		D96DE503247D2FB500BCB615 /* Matrix.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix.cpp; sourceTree = "<group>"; };
 		D96DE504247D2FB500BCB615 /* Matrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
 		D9C768132480C5F100B4092D /* SolidShape.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SolidShape.cpp; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				D95E3004247A97DF003E339B /* Environment.h */,
+				D95B3BA62482890900B45D2C /* Material.h */,
 				D96DE504247D2FB500BCB615 /* Matrix.h */,
 				D95E3002247A9758003E339B /* Object.h */,
 				D9F47A2F247A941500A50CF7 /* Shader.h */,
@@ -107,6 +112,7 @@
 				D9FC2528247DCF7900C9CAAA /* ShapeIndex.h */,
 				D9C768142480C5F100B4092D /* SolidShape.h */,
 				D9FC252B247DD80800C9CAAA /* SolidShapeIndex.h */,
+				D9642AF424828A7000279F4D /* Uniform.h */,
 				D913CF222481CF4200C73EB8 /* Vector.h */,
 				D9EB8017247B23DE00173315 /* Window.h */,
 			);
@@ -124,6 +130,7 @@
 				D9FC2527247DCF7900C9CAAA /* ShapeIndex.cpp */,
 				D9C768132480C5F100B4092D /* SolidShape.cpp */,
 				D9FC252A247DD80800C9CAAA /* SolidShapeIndex.cpp */,
+				D9642AF324828A7000279F4D /* Uniform.cpp */,
 				D9EB8016247B23DE00173315 /* Window.cpp */,
 			);
 			path = Source;
@@ -213,6 +220,7 @@
 				D96DE505247D2FB500BCB615 /* Matrix.cpp in Sources */,
 				D9EB8018247B23DE00173315 /* Window.cpp in Sources */,
 				D9EDFAA82479D4D900CCC42B /* main.cpp in Sources */,
+				D9642AF524828A7000279F4D /* Uniform.cpp in Sources */,
 				D916D8EA247AB13B0046EFF5 /* Shape.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

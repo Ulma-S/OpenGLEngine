@@ -5,12 +5,14 @@
 #include <vector>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include "Material.h"
 #include "Matrix.h"
 #include "Shape.h"
 #include "ShapeIndex.h"
 #include "Shader.h"
 #include "SolidShape.h"
 #include "SolidShapeIndex.h"
+#include "Uniform.h"
 #include "Vector.h"
 #include "Window.h"
 
@@ -155,6 +157,10 @@ int main(void) {
     const GLint LdiffLoc(glGetUniformLocation(program, "Ldiff"));
     const GLint LspecLoc(glGetUniformLocation(program, "Lspec"));
     
+    const GLint materialLoc(glGetUniformBlockIndex(program, "Material"));
+    
+    glUniformBlockBinding(program, materialLoc, 0);
+    
     /* Render sphere */
     const int slices(16), stacks(8);
     
@@ -202,6 +208,13 @@ int main(void) {
     static constexpr GLfloat Ldiff[] = { 1.0f, 0.5f, 0.5f, 0.9f, 0.9f, 0.9f };
     static constexpr GLfloat Lspec[] = { 1.0f, 0.5f, 0.5f, 0.9f, 0.9f, 0.9f };
     
+    static constexpr Material color[] = {
+        { 0.6f, 0.6f, 0.2f, 0.6f, 0.6f, 0.2f, 0.3f, 0.3f, 0.3f, 30.0f },
+        { 0.1f, 0.1f, 0.5f, 0.1f, 0.1f, 0.5f, 0.4f, 0.4f, 0.4f, 60.0f }
+    };
+    
+    const Uniform<Material> material[] = { &color[0], &color[1] };
+    
     glfwSetTime(0.0f);
     
     /* Loop until window closed */
@@ -239,6 +252,7 @@ int main(void) {
         glUniform3fv(LspecLoc, Lcount, Lspec);
         
         /* Draw shape */
+        material[0].Select(0);
         shape->Draw();
         
         const Matrix modelview1(modelview * Matrix::Translate(0.0f, 0.0f, 3.0f));
@@ -248,6 +262,7 @@ int main(void) {
         glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelview1.Data());
         glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, normalMatrix);
         
+        material[1].Select(0);
         shape->Draw();
         
         /* Swap front and back buffers */
